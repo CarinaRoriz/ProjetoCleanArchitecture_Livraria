@@ -35,16 +35,11 @@ namespace CleanArchitecture_Livraria.Application.UseCases.RemoverLivroCarrinho
             if (carrinhoCompras == null)
                 throw new CarrinhoNotFoundException($"O carrinho de compras {input.CarrinhoId} não foi encontrado.");
 
-            Livro livro = new Livro(input.Livro.Isbn, input.Livro.Nome, input.Livro.Preco);
+            var carrinhoComprasLivro = new CarrinhoComprasLivro(input.CarrinhoId, input.LivroId);
 
-            foreach (AutorInput autor in input.Livro.Autores)
-            {
-                livro.AdicionarAutor(autor.Nome);
-            }
+            carrinhoCompras.RemoverLivro(carrinhoComprasLivro);
 
-            carrinhoCompras.RemoverLivro(livro);
-
-            RemoverLivroCarrinhoOutput output = outputConverter.Map<RemoverLivroCarrinhoOutput>(livro);
+            RemoverLivroCarrinhoOutput output = outputConverter.Map<RemoverLivroCarrinhoOutput>(carrinhoComprasLivro);
             this.outputBoundary.Populate(output);
         }
     }

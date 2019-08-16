@@ -6,15 +6,15 @@ namespace CleanArchitecture_Livraria.Application.UseCases.RemoverLivroCarrinho
 {
     public class RemoverLivroCarrinhoOutput
     {
-        public LivroOutput Livro;
+        public Guid LivroId;
 
         public RemoverLivroCarrinhoOutput()
         {
         }
 
-        public RemoverLivroCarrinhoOutput(LivroOutput livro)
+        public RemoverLivroCarrinhoOutput(Guid livroId)
         {
-            Livro = livro;
+            LivroId = livroId;
         }
     }
 }

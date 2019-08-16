@@ -17,8 +17,8 @@ namespace CleanArchitecture_Livraria.Application.UseCases.EfetivarPedido
             Email = email;
         }
 
-        public virtual string Nome { get; set; }
-        public virtual string CPF { get; set; }
-        public virtual string Email { get; set; }
+        public string Nome { get; set; }
+        public string CPF { get; set; }
+        public string Email { get; set; }
     }
 }

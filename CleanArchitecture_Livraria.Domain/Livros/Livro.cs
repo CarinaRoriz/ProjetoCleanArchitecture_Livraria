@@ -12,7 +12,7 @@ namespace CleanArchitecture_Livraria.Domain.Livros
         public string Isbn { get; protected set; }
         public string Nome { get; protected set; }
         public decimal Preco { get; protected set; }
-        public List<LivroAutor> Autores { get; protected set; }
+        public virtual List<LivroAutor> Autores { get; protected set; }
 
         public virtual List<CarrinhoComprasLivro> CarrinhoCompras { get; set; }
 

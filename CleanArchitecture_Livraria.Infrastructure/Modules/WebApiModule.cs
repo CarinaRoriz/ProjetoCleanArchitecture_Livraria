@@ -16,7 +16,6 @@
                 .AsClosedTypesOf(typeof(IOutputBoundary<>))
                 .InstancePerLifetimeScope();
 
-           // builder.RegisterType<LivroOutput>().As(typeof(IOutputBoundary<>));
 
         }
     }

@@ -8,4 +8,8 @@
     <ProjectReference Include="..\CleanArchitecture_Livraria.Domain\CleanArchitecture_Livraria.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Outputs\" />
+  </ItemGroup>
+
 </Project>

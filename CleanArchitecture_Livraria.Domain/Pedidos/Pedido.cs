@@ -8,17 +8,23 @@ namespace CleanArchitecture_Livraria.Domain.Pedidos
 {
     public class Pedido : Entity
     {
-        public virtual List<PedidosLivro> Livros { get; protected set; }
-        public virtual Guid IdCliente { get; set; }
-        public virtual Cliente Cliente { get; protected set; }
-        public virtual decimal ValorTotal { get; protected set; }
-        public virtual DateTime Data { get; protected set; }
+        public List<PedidosLivro> Livros { get; set; }
+        public Guid IdCliente { get; set; }
+        public virtual Cliente Cliente { get; set; }
+        public decimal ValorTotal { get; set; }
+        public DateTime Data { get; set; }
 
         public Pedido(Cliente cliente)
         {
             this.Livros = new List<PedidosLivro>();
             this.Data = DateTime.Now;
             this.Cliente = cliente;
+        }
+
+        private Pedido()
+        {
+            this.Livros = new List<PedidosLivro>();
+            this.Data = DateTime.Now;
         }
 
         public void AdicionarLivros(Guid livroId)

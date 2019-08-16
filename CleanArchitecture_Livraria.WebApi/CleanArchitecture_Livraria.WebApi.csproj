@@ -29,6 +29,10 @@
     <ProjectReference Include="..\CleanArchitecture_Livraria.Infrastructure\CleanArchitecture_Livraria.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
+
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>

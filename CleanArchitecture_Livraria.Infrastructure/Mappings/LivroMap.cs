@@ -26,7 +26,11 @@ namespace CleanArchitecture_Livraria.Infrastructure.Mappings
             builder.Property(c => c.Preco)
               .IsRequired()
               .HasColumnName("Preco");
-            
+
+            builder.HasMany(c => c.Autores)
+            .WithOne(c => c.Livro)
+            .HasForeignKey(x => x.AutorId);
+
         }
     }
 }

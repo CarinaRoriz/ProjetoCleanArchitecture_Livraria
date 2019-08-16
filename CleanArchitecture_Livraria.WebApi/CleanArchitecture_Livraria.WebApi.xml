@@ -4,7 +4,7 @@
         <name>CleanArchitecture_Livraria.WebApi</name>
     </assembly>
     <members>
-        <member name="M:CleanArchitecture_Livraria.WebApi.UseCases.AdicionarLivro.AdicionarLivroController.AdicionarLivroCarrinho(System.Guid,CleanArchitecture_Livraria.Application.UseCases.AdicionarLivroCarrinho.LivroInput)">
+        <member name="M:CleanArchitecture_Livraria.WebApi.UseCases.AdicionarLivro.AdicionarLivroController.AdicionarLivroCarrinho(System.Guid,System.Guid)">
             <summary>
             Adicionar livro à um carrinho de compras
             </summary>
@@ -14,44 +14,14 @@
             Cadastra um livro
             </summary>
         </member>
-        <member name="M:CleanArchitecture_Livraria.WebApi.UseCases.CloseAccount.AccountsController.Close(System.Guid)">
-            <summary>
-            Close the account
-            </summary>
-        </member>
-        <member name="M:CleanArchitecture_Livraria.WebApi.UseCases.Deposit.AccountsController.Deposit(CleanArchitecture_Livraria.WebApi.UseCases.Deposit.DepositRequest)">
-            <summary>
-            Deposit to an account
-            </summary>
-        </member>
         <member name="M:CleanArchitecture_Livraria.WebApi.UseCases.EfetivarPedido.EfetivarPedidoController.EfetivarPedido(System.Guid,CleanArchitecture_Livraria.Application.UseCases.EfetivarPedido.ClienteInput)">
             <summary>
             Efetiva pedido a partir de um carrinho de compras e cliente
             </summary>
         </member>
-        <member name="M:CleanArchitecture_Livraria.WebApi.UseCases.GetAccountDetails.AccountsController.Get(System.Guid)">
-            <summary>
-            Get an account balance
-            </summary>
-        </member>
-        <member name="M:CleanArchitecture_Livraria.WebApi.UseCases.GetCustomerDetails.CustomersController.GetCustomer(System.Guid)">
-            <summary>
-            Get a Customer details 
-            </summary>
-        </member>
-        <member name="M:CleanArchitecture_Livraria.WebApi.UseCases.Register.CustomersController.Post(CleanArchitecture_Livraria.WebApi.UseCases.Register.RegisterRequest)">
-            <summary>
-            Register a new Customer
-            </summary>
-        </member>
-        <member name="M:CleanArchitecture_Livraria.WebApi.UseCases.RemoverLivro.RemoverLivroController.RemoverLivroCarrinho(System.Guid,CleanArchitecture_Livraria.Application.UseCases.RemoverLivroCarrinho.LivroInput)">
+        <member name="M:CleanArchitecture_Livraria.WebApi.UseCases.RemoverLivro.RemoverLivroController.RemoverLivroCarrinho(System.Guid,System.Guid)">
             <summary>
             Remover livro de um carrinho de compras
-            </summary>
-        </member>
-        <member name="M:CleanArchitecture_Livraria.WebApi.UseCases.Withdraw.AccountsController.Withdraw(CleanArchitecture_Livraria.WebApi.UseCases.Withdraw.WithdrawRequest)">
-            <summary>
-            Withdraw from an account
             </summary>
         </member>
     </members>

@@ -8,12 +8,12 @@ namespace CleanArchitecture_Livraria.Application.UseCases.RemoverLivroCarrinho
     {
         public Guid CarrinhoId { get; set; }
 
-        public LivroInput Livro { get; set; }
+        public Guid LivroId { get; set; }
 
-        public RemoverLivroCarrinhoInput(Guid carrinhoId, LivroInput livro)
+        public RemoverLivroCarrinhoInput(Guid carrinhoId, Guid livroId)
         {
             CarrinhoId = carrinhoId;
-            Livro = livro;
+            LivroId = livroId;
         }
 
         public RemoverLivroCarrinhoInput()

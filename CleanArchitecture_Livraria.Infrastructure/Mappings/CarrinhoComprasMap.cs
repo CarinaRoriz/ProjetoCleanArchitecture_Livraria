@@ -15,9 +15,9 @@ namespace CleanArchitecture_Livraria.Infrastructure.Mappings
 
             builder.HasKey(c => c.Id);
 
-            //builder.HasMany(c => c.Livros)
-            //.WithOne(c => c.CarrinhoCompras)
-            //.HasForeignKey(x => x.Id);
+            builder.HasMany(c => c.Livros)
+            .WithOne(c => c.CarrinhoCompras)
+            .HasForeignKey(x => x.LivroId);
 
         }
     }

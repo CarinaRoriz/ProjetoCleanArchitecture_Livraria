@@ -12,8 +12,7 @@ namespace CleanArchitecture_Livraria.Infrastructure.Mappings
         public RemoverLivroCarrinhoProfile()
         {
             CreateMap<Livro, RemoverLivroCarrinhoOutput>()
-                .ForMember(dest => dest.Livro.Isbn, opt => opt.MapFrom(src => src.Isbn))
-                .ForMember(dest => dest.Livro.Nome, opt => opt.MapFrom(src => src.Nome));
+                .ForMember(dest => dest.LivroId, opt => opt.MapFrom(src => src.Id));
         }
     }
 }

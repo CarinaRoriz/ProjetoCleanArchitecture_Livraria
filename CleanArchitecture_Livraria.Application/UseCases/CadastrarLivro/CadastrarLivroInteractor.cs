@@ -29,7 +29,7 @@ namespace CleanArchitecture_Livraria.Application.UseCases.CadastrarLivro
 
             foreach(AutorInput autor in input.Autores)
             {
-                livro.AdicionarAutor(autor.Nome);
+                livro.AdicionarAutor(autor.Id);
             }
 
             await livroWriteOnlyRepository.Add(livro);

@@ -25,9 +25,9 @@ namespace CleanArchitecture_Livraria.WebApi.UseCases.RemoverLivro
         /// Remover livro de um carrinho de compras
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> RemoverLivroCarrinho(Guid carrinhoId, LivroInput livro)
+        public async Task<IActionResult> RemoverLivroCarrinho(Guid carrinhoId, Guid livroId)
         {
-            var request = new RemoverLivroCarrinhoInput(carrinhoId, livro);
+            var request = new RemoverLivroCarrinhoInput(carrinhoId, livroId);
 
             await removerLivroCarrinhoInput.Process(request);
             return removerLivroCarrinhoPresenter.ViewModel;

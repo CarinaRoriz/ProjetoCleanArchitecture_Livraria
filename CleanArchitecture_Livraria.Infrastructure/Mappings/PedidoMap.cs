@@ -27,12 +27,13 @@ namespace CleanArchitecture_Livraria.Infrastructure.Mappings
               .IsRequired()
               .HasColumnName("IdCliente");
 
-            builder.HasOne(c => c.Cliente)
-               .WithMany(c => c.Pedidos)
-               .HasForeignKey(x => x.IdCliente)
-               .IsRequired(true)
-               .OnDelete(DeleteBehavior.SetNull);
-
+            builder.HasOne(bc => bc.Cliente)
+                .WithMany(c => c.Pedidos)
+                .HasForeignKey(bc => bc.IdCliente);
+            
+            builder.HasMany(c => c.Livros)
+            .WithOne(c => c.Pedido)
+            .HasForeignKey(x => x.LivroId);
 
         }
     }
