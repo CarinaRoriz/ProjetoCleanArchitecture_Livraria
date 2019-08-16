@@ -42,6 +42,8 @@ namespace CleanArchitecture_Livraria.Domain.Pedidos
             {
                 valorTotal += p.Livro.Preco;
             }
+
+            this.ValorTotal = valorTotal;
         }
 
     }

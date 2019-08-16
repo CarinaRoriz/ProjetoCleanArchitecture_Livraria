@@ -6,8 +6,9 @@ namespace CleanArchitecture_Livraria.Application.UseCases.CadastrarLivro
 {
     public class LivroOutput
     {
-        public LivroOutput(string isbn, string nome)
+        public LivroOutput(Guid livroId, string isbn, string nome)
         {
+            LivroId = livroId;
             Isbn = isbn;
             Nome = nome;
         }
@@ -16,6 +17,7 @@ namespace CleanArchitecture_Livraria.Application.UseCases.CadastrarLivro
         {
         }
 
+        public Guid LivroId { get; set; }
         public string Isbn { get; set; }
         public string Nome { get; set; }
 

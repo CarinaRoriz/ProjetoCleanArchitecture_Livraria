@@ -9,10 +9,12 @@
 
         public OutputConverter()
         {
-            //mapper = new MapperConfiguration(cfg => {
-            //    cfg.AddProfile<AccountsProfile>();
-            //    cfg.AddProfile<CustomersProfile>();
-            //}).CreateMapper();
+            mapper = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<LivroProfile>();
+                cfg.AddProfile<PedidoProfile>();
+                cfg.AddProfile<CarrinhoComprasProfile>();
+            }).CreateMapper();
         }
 
         public T Map<T>(object source)

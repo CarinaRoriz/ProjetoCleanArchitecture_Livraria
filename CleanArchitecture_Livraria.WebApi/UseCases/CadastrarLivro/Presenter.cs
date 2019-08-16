@@ -19,7 +19,7 @@
                 return;
             }
 
-            ViewModel = new OkResult();
+            ViewModel = new ObjectResult(response.LivroId);
         }
     }
 }

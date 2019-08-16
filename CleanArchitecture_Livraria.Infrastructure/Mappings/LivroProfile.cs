@@ -12,6 +12,7 @@ namespace CleanArchitecture_Livraria.Infrastructure.Mappings
         public LivroProfile()
         {
             CreateMap<Livro, LivroOutput>()
+                .ForMember(dest => dest.LivroId, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Isbn, opt => opt.MapFrom(src => src.Isbn))
                 .ForMember(dest => dest.Nome, opt => opt.MapFrom(src => src.Nome));
         }

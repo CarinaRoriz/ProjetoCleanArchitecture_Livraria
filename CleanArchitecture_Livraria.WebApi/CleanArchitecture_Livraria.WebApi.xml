@@ -4,6 +4,11 @@
         <name>CleanArchitecture_Livraria.WebApi</name>
     </assembly>
     <members>
+        <member name="M:CleanArchitecture_Livraria.WebApi.UseCases.AdicionarCarrinhoCompras.AdicionarCarrinhoComprasController.CadastraCarrinhoCompras">
+            <summary>
+            Cadastra um carrinho de compras
+            </summary>
+        </member>
         <member name="M:CleanArchitecture_Livraria.WebApi.UseCases.AdicionarLivro.AdicionarLivroController.AdicionarLivroCarrinho(System.Guid,System.Guid)">
             <summary>
             Adicionar livro à um carrinho de compras
