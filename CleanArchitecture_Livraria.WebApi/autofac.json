@@ -1,0 +1,20 @@
+﻿{
+  "defaultAssembly": "CleanArchitecture_Livraria.Infrastructure",
+  "modules": [
+    {
+      "type": "CleanArchitecture_Livraria.Infrastructure.Modules.WebApiModule",
+      "properties": {
+      }
+    },
+    {
+      "type": "CleanArchitecture_Livraria.Infrastructure.Modules.ApplicationModule",
+      "properties": {
+      }
+    },
+    {
+      "type": "CleanArchitecture_Livraria.Infrastructure.Modules.InfrastructureModule",
+      "properties": {
+      }
+    }
+  ]
+}

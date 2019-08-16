@@ -1,0 +1,15 @@
+﻿using CleanArchitecture_Livraria.Domain.Livros;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CleanArchitecture_Livraria.Application.Repositories
+{
+    public interface ILivroWriteOnlyRepository
+    {
+        Task Add(Livro livro);
+        void Update(Livro livro);
+        void Delete(Livro livro);
+    }
+}
