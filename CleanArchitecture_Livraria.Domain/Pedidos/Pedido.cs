@@ -27,9 +27,9 @@ namespace CleanArchitecture_Livraria.Domain.Pedidos
             this.Data = DateTime.Now;
         }
 
-        public void AdicionarLivros(Guid livroId)
+        public void AdicionarLivros(Livro livro)
         {
-            var pedidoLivro = new PedidosLivro(this.Id, livroId);
+            var pedidoLivro = new PedidosLivro(this, livro);
 
             this.Livros.Add(pedidoLivro);
         }

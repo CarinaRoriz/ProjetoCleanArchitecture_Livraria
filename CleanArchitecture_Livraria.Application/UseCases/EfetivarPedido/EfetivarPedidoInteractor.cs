@@ -2,6 +2,7 @@
 using CleanArchitecture_Livraria.Domain.Accounts;
 using CleanArchitecture_Livraria.Domain.CarrinhosCompras;
 using CleanArchitecture_Livraria.Domain.Clientes;
+using CleanArchitecture_Livraria.Domain.Livros;
 using CleanArchitecture_Livraria.Domain.Pedidos;
 using System;
 using System.Collections.Generic;
@@ -13,17 +14,20 @@ namespace CleanArchitecture_Livraria.Application.UseCases.EfetivarPedido
     public class EfetivarPedidoInteractor : IInputBoundary<EfetivarPedidoInput>
     {
         private readonly IPedidoWriteOnlyRepository efetivarPedidoWriteOnlyRepository;
+        private readonly ILivroReadOnlyRepository livroReadOnlyRepository;
         private readonly IOutputBoundary<EfetivarPedidoOutput> outputBoundary;
         private readonly IOutputConverter outputConverter;
         private readonly ICarrinhoReadOnlyRepository carrinhoReadOnlyRepository;
 
         public EfetivarPedidoInteractor(
             IPedidoWriteOnlyRepository efetivarPedidoWriteOnlyRepository,
+            ILivroReadOnlyRepository livroReadOnlyRepository,
             IOutputBoundary<EfetivarPedidoOutput> outputBoundary,
             IOutputConverter outputConverter,
             ICarrinhoReadOnlyRepository carrinhoReadOnlyRepository)
         {
             this.efetivarPedidoWriteOnlyRepository = efetivarPedidoWriteOnlyRepository;
+            this.livroReadOnlyRepository = livroReadOnlyRepository;
             this.outputBoundary = outputBoundary;
             this.outputConverter = outputConverter;
             this.carrinhoReadOnlyRepository = carrinhoReadOnlyRepository;
@@ -42,7 +46,8 @@ namespace CleanArchitecture_Livraria.Application.UseCases.EfetivarPedido
 
             foreach(CarrinhoComprasLivro c in carrinhoCompras.Livros)
             {
-                pedido.AdicionarLivros(c.LivroId);
+                Livro livro = await livroReadOnlyRepository.Get(c.LivroId);
+                pedido.AdicionarLivros(livro);
             }
             
             pedido.CalculaValorTotal();

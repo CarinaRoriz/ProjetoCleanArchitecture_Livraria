@@ -23,7 +23,7 @@ namespace CleanArchitecture_Livraria.WebApi.UseCases.AdicionarLivro
                 return;
             }
 
-            ViewModel = new OkResult();
+            ViewModel = new ObjectResult(response.LivroId);
         }
     }
 }

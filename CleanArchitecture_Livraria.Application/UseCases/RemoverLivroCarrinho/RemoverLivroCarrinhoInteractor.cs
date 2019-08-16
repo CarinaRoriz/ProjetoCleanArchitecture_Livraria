@@ -13,17 +13,20 @@ namespace CleanArchitecture_Livraria.Application.UseCases.RemoverLivroCarrinho
     {
         private readonly ICarrinhoWriteOnlyRepository carrinhoWriteOnlyRepository;
         private readonly ICarrinhoReadOnlyRepository carrinhoReadOnlyRepository;
+        private readonly ILivroReadOnlyRepository livroReadOnlyRepository;
         private readonly IOutputBoundary<RemoverLivroCarrinhoOutput> outputBoundary;
         private readonly IOutputConverter outputConverter;
 
         public RemoverLivroCarrinhoInteractor(
             ICarrinhoWriteOnlyRepository carrinhoWriteOnlyRepository,
             ICarrinhoReadOnlyRepository carrinhoReadOnlyRepository,
+            ILivroReadOnlyRepository livroReadOnlyRepository,
             IOutputBoundary<RemoverLivroCarrinhoOutput> outputBoundary,
             IOutputConverter outputConverter)
         {
             this.carrinhoWriteOnlyRepository = carrinhoWriteOnlyRepository;
             this.carrinhoReadOnlyRepository = carrinhoReadOnlyRepository;
+            this.livroReadOnlyRepository = livroReadOnlyRepository;
             this.outputBoundary = outputBoundary;
             this.outputConverter = outputConverter;
         }
@@ -35,10 +38,15 @@ namespace CleanArchitecture_Livraria.Application.UseCases.RemoverLivroCarrinho
             if (carrinhoCompras == null)
                 throw new CarrinhoNotFoundException($"O carrinho de compras {input.CarrinhoId} não foi encontrado.");
 
-            var carrinhoComprasLivro = new CarrinhoComprasLivro(input.CarrinhoId, input.LivroId);
+            Livro livro = await livroReadOnlyRepository.Get(input.LivroId);
+
+            if (livro == null)
+                throw new LivroNotFoundException($"O livro {input.CarrinhoId} não foi encontrado.");
+
+            var carrinhoComprasLivro = new CarrinhoComprasLivro(input.CarrinhoId, carrinhoCompras, input.LivroId, livro);
 
             carrinhoCompras.RemoverLivro(carrinhoComprasLivro);
-
+            
             RemoverLivroCarrinhoOutput output = outputConverter.Map<RemoverLivroCarrinhoOutput>(carrinhoComprasLivro);
             this.outputBoundary.Populate(output);
         }

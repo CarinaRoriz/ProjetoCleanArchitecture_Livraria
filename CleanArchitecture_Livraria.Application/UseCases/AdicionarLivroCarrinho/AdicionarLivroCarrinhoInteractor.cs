@@ -13,17 +13,20 @@ namespace CleanArchitecture_Livraria.Application.UseCases.AdicionarLivroCarrinho
     {
         private readonly ICarrinhoWriteOnlyRepository carrinhoWriteOnlyRepository;
         private readonly ICarrinhoReadOnlyRepository carrinhoReadOnlyRepository;
+        private readonly ILivroReadOnlyRepository livroReadOnlyRepository;
         private readonly IOutputBoundary<AdicionarLivroCarrinhoOutput> outputBoundary;
         private readonly IOutputConverter outputConverter;
 
         public AdicionarLivroCarrinhoInteractor(
             ICarrinhoWriteOnlyRepository carrinhoWriteOnlyRepository,
             ICarrinhoReadOnlyRepository carrinhoReadOnlyRepository,
+            ILivroReadOnlyRepository livroReadOnlyRepository, 
             IOutputBoundary<AdicionarLivroCarrinhoOutput> outputBoundary,
             IOutputConverter outputConverter)
         {
             this.carrinhoWriteOnlyRepository = carrinhoWriteOnlyRepository;
             this.carrinhoReadOnlyRepository = carrinhoReadOnlyRepository;
+            this.livroReadOnlyRepository = livroReadOnlyRepository;
             this.outputBoundary = outputBoundary;
             this.outputConverter = outputConverter;
         }
@@ -35,10 +38,15 @@ namespace CleanArchitecture_Livraria.Application.UseCases.AdicionarLivroCarrinho
             if (carrinhoCompras == null)
                 throw new CarrinhoNotFoundException($"O carrinho de compras {input.CarrinhoId} não foi encontrado.");
 
-            var carrinhoComprasLivro = new CarrinhoComprasLivro(carrinhoCompras.Id, input.LivroId);
+            Livro livro = await livroReadOnlyRepository.Get(input.LivroId);
+
+            if (livro == null)
+                throw new LivroNotFoundException($"O livro {input.CarrinhoId} não foi encontrado.");
+
+            var carrinhoComprasLivro = new CarrinhoComprasLivro(carrinhoCompras.Id, carrinhoCompras, input.LivroId, livro);
 
             carrinhoCompras.AdicionarLivro(carrinhoComprasLivro);
-
+            
             AdicionarLivroCarrinhoOutput output = outputConverter.Map<AdicionarLivroCarrinhoOutput>(carrinhoComprasLivro);
             this.outputBoundary.Populate(output);
 

@@ -7,14 +7,16 @@ namespace CleanArchitecture_Livraria.Domain.Pedidos
 {
     public class PedidosLivro : Entity
     {
-        public PedidosLivro()
+        private PedidosLivro()
         {
         }
 
-        public PedidosLivro(Guid pedidoId, Guid livroId)
+        public PedidosLivro(Pedido pedido, Livro livro)
         {
-            PedidoId = pedidoId;
-            LivroId = livroId;
+            PedidoId = pedido.Id;
+            Pedido = pedido;
+            LivroId = livro.Id;
+            Livro = livro;
         }
 
         public Guid PedidoId { get; set; }

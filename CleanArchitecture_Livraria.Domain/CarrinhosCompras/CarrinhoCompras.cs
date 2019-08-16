@@ -22,7 +22,10 @@ namespace CleanArchitecture_Livraria.Domain.CarrinhosCompras
 
         public void RemoverLivro(CarrinhoComprasLivro livro)
         {
-            this.Livros.Remove(livro);
+            CarrinhoComprasLivro livroEncontrado = this.Livros.Find(l => l.LivroId == livro.LivroId);
+
+            if(livroEncontrado != null)
+                this.Livros.Remove(livroEncontrado);
         }
     }
 }

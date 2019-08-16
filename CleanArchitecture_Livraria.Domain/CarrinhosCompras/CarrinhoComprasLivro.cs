@@ -7,10 +7,17 @@ namespace CleanArchitecture_Livraria.Domain.CarrinhosCompras
 {
     public class CarrinhoComprasLivro : Entity
     {
-        public CarrinhoComprasLivro(Guid carrinhoComprasId, Guid livroId)
+        public CarrinhoComprasLivro(Guid carrinhoComprasId, CarrinhoCompras carrinhoCompras, Guid livroId, Livro livro)
         {
             CarrinhoComprasId = carrinhoComprasId;
+            CarrinhoCompras = carrinhoCompras;
             LivroId = livroId;
+            Livro = livro;
+        }
+
+        private CarrinhoComprasLivro()
+        {
+
         }
 
         public Guid CarrinhoComprasId { get; set; }

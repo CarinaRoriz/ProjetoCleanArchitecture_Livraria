@@ -23,7 +23,7 @@ namespace CleanArchitecture_Livraria.WebApi.UseCases.RemoverLivro
                 return;
             }
 
-            ViewModel = new OkResult();
+            ViewModel = new ObjectResult(response.LivroId);
         }
     }
 }

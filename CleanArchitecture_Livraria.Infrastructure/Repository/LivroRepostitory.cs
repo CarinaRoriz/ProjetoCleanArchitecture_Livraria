@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CleanArchitecture_Livraria.Infrastructure.Repository
 {
-    public class LivroRepostitory : ILivroWriteOnlyRepository
+    public class LivroRepostitory : ILivroWriteOnlyRepository, ILivroReadOnlyRepository
     {
         private readonly Context context;
 
@@ -26,6 +26,11 @@ namespace CleanArchitecture_Livraria.Infrastructure.Repository
         {
             context.Livro.Remove(livro);
             context.SaveChanges();
+        }
+
+        public async Task<Livro> Get(Guid id)
+        {
+            return await context.Livro.FindAsync(id);
         }
 
         public void Update(Livro livro)
